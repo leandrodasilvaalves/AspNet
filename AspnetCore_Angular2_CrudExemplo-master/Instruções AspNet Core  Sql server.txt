@@ -1,0 +1,23 @@
+npm install 
+
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.SqlServer.Design
+
+<ItemGroup>
+	<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1"/>
+</ItemGroup>
+
+Scaffold-DbContext "Data Source=.\SQLEXPRESS;Initial Catalog=Estudo;Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+using Microsoft.EntityFrameworkCore;
+services.AddDbContext<EstudoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
+
+ public EstudoContext(DbContextOptions<EstudoContext> options):base(options){}
+
+/*--------AINDA--NÃO--DEU--CERTO--ESTA--PARTE----------------------*/
+npm insall -g @angular/cli@latest <------------ Instalar globalmente
+ng new teste <--------------------------------- Criar uma nova aplicação angular
+copy angular-cli.json ..\estudo <-------------- Copiar o arquivo angular-cli.json para o nosso projeto
+IMPORNTANTE <---------------------------------- Abrir o arquivo angular-cli.json do projeto e alterar o valor de root de "src" para "ClienteApp"
+npm install @angular/cli@latest --save-dev <--- Instalar o Angular CLI como uma dependência do nosso projeto

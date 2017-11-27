@@ -1,0 +1,67 @@
+﻿<div>
+    <h1>Pessoas</h1>
+</div>
+
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-10 ">
+            <h3>{{ formLabel }}</h3>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-1" >Nome:</label>
+                        <div class="col-xs-12 col-sm-6">
+                            <input class="form-control" type="text" formControlName="nome"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-1">Email:</label>
+                        <div class="col-xs-12 col-sm-6">
+                            <input class="form-control" type="text" formControlName="email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-1">Telefone:</label>
+                        <div class="col-xs-12 col-sm-6">
+                            <input class="form-control" type="text" formControlName="telefone" />
+                        </div>
+                    </div>
+                    <div class="form-footer col-md-12">
+                        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" >Salvar</button>
+                        <button class="btn btn-warning" type="button" (click)="cancel()">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<br />
+<br />
+<br />
+
+<table class="table table-striped" >
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of pessoas">
+            <td>{{ p.id }}</td>
+            <td>{{ p.nome }}</td>
+            <td>{{ p.email}}</td>
+            <td>{{ p.telefone}}</td>
+            <td>
+                <div class="btn-group">
+                    <button (click)="edit(p)" class="btn btn-warning btn-sm glyphicon glyphicon-pencil"></button>
+                    <button (click)="delete(p)" class="btn btn-danger btn-sm glyphicon glyphicon-remove"></button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
