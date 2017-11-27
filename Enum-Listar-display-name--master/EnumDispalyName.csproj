@@ -45,6 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\Models\DisplayEnum.cs" />
+    <Compile Include="Enum\Models\EnumObj.cs" />
+    <Compile Include="Enum\Models\EnumViewModel.cs" />
+    <Compile Include="Enum\EstadoCivil.cs" />
+    <Compile Include="Enum\Models\EstadoCivilViewModel.cs" />
+    <Compile Include="Enum\Models\StatusViewModel.cs" />
+    <Compile Include="Enum\Status.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
