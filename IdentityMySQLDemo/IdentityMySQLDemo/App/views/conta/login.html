@@ -1,0 +1,27 @@
+﻿
+<h2>Entrar no sistema</h2>
+<hr />
+
+<form name="frmLogin">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Usuário</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Usuário" autofocus
+               name="username" ng-model="conta.username" ng-required="true">
+        <small id="emailHelp" class="form-text text-muted">Informe o usuário.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Senha</label>
+        <input type="password" class="form-control" aria-describedby="emailHelp" placeholder="Senha ***"
+               name="password" ng-model="conta.password" ng-required="true">
+        <small id="emailHelp" class="form-text text-muted">Informe a senha.</small>
+    </div>
+
+
+    <a href="#!/home" class="btn btn-warning">Home</a>
+    <button type="submit" class="btn btn-info"
+            ng-click="entrar(conta)">
+        Entrar
+    </button>
+</form>

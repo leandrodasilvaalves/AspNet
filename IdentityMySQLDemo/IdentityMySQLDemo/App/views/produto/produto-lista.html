@@ -1,0 +1,35 @@
+﻿<h2>Lista de Produtos</h2>
+
+
+<div class="row">
+    <div class="col-12"><a href="#!/produto/novo" class="btn btn-info">Incluir Novo</a></div></div>
+
+<br />
+<div class="row">
+    <div class="col-6">
+        <input type="text" placeholder="Pesquisar..." class="form-control"
+               ng-model="pesquisar" ng-model-options="{updateOn:'default blur', debounce: {default: 500, blur:0}}" />
+    </div>
+</div> 
+<br />
+<table class="table table-stripped" ng-init="listarTodos();">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="prod in todosProdutos | filter:pesquisar track by prod.Id">
+            <td ng-bind="::prod.Id"></td>
+            <td ng-bind="::prod.Nome"></td>
+            <td ng-bind="::prod.Preco | currency:'R$ '"></td>
+            <td>
+                <a class="btn btn-info" href="#!/produto/editar/{{ prod.Id }}">Editar</a>
+                <a class="btn btn-danger" ng-click="confirmaApagar(prod)">Apagar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

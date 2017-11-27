@@ -1,0 +1,14 @@
+
+Esta aplicação prove um exemplo básico de como realizar autenticação Indentity Owin através do angularJs
+
+
+Para funcionar os métodos PUT e DELETE servidor é preciso inserir as linhas abaixo no Web.config
+
+<system.webServer>
+  <modules>
+    <remove name="WebDAVModule" />
+  </modules>
+  <handlers>
+    <remove name="WebDAV" />
+  </handlers>
+</system.webServer>
