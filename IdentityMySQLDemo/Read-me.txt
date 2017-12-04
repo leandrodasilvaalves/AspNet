@@ -1,8 +1,11 @@
+ReferÃªncia para o exemplo:
+https://devmais.wordpress.com/2015/02/26/mysql-entityframework-code-first/
 
-Esta aplicação prove um exemplo básico de como realizar autenticação Indentity Owin através do angularJs
+
+Esta aplicaÃ§Ã£o prove um exemplo bÃ¡sico de como realizar autenticaÃ§Ã£o Indentity Owin atravÃ©s do angularJs
 
 
-Para funcionar os métodos PUT e DELETE servidor é preciso inserir as linhas abaixo no Web.config
+Para funcionar os mÃ©todos PUT e DELETE servidor Ã© preciso inserir as linhas abaixo no Web.config
 
 <system.webServer>
   <modules>
