@@ -1,6 +1,7 @@
 Referência para o exemplo:
 https://devmais.wordpress.com/2015/02/26/mysql-entityframework-code-first/
 
+IMPORTANTE: Depois que o migration for adicionado abrir o arquivo gerador das tabelas e modificar os maxlength de 256 para 255.
 
 Esta aplicação prove um exemplo básico de como realizar autenticação Indentity Owin através do angularJs
 
