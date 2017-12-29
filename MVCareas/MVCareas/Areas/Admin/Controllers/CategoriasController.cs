@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MVCareas.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CategoriasController : Controller
     {
         private Contexto db = new Contexto();

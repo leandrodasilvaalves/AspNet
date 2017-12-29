@@ -6,32 +6,11 @@ using System.Web.Mvc;
 
 namespace MVCareas.Areas.Admin.Controllers
 {
-    public class ProdutosController : Controller
+    [Authorize]
+    public class ProdutosController : MVCareas.Controllers.ProdutosController
     {
         private Contexto db = new Contexto();
-
-        // GET: Admin/Produtos
-        public async Task<ActionResult> Index()
-        {
-            var produtos = db.Produtos.Include(p => p.Categoria);
-            return View(await produtos.ToListAsync());
-        }
-
-        // GET: Admin/Produtos/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produto produto = await db.Produtos.FindAsync(id);
-            if (produto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(produto);
-        }
-
+        
         // GET: Admin/Produtos/Create
         public ActionResult Create()
         {
@@ -114,15 +93,6 @@ namespace MVCareas.Areas.Admin.Controllers
             db.Produtos.Remove(produto);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
