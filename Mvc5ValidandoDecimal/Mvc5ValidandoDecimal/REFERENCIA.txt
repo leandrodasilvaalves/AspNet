@@ -1,0 +1,1 @@
+﻿http://blog.tutorem.com/post/2014/06/20/ASPNet-MVC-5-Issue-Validating-Numbers-(Decimal)-when-Number-Contains-Commas1.aspx
