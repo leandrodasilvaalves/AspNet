@@ -1,0 +1,4 @@
+﻿Para executar este projeto teste será necessário criar a pasta "Imagens" detro de \bin\Debug com as imagens desejadas.
+Também será preciso baixar os dicionários ou pacotes de idioma desejados, neste caso pelo menos o idioma portugues na 
+url "https://github.com/tesseract-ocr/tessdata/blob/master/por.traineddata" e em seguida salvar no diretorio "tessdata"
+também dentro de \bin\Debug.
