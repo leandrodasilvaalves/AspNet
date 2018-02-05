@@ -1,0 +1,14 @@
+﻿<div class="jumbotron">
+    <h1>Upload básico utilizando controller Web API</h1>
+    <a class="btn btn-warning" href="https://docs.microsoft.com/pt-br/aspnet/web-api/overview/advanced/sending-html-form-data-part-2" target="_blank">Referência</a>
+    
+    <form name="form1" method="post" enctype="multipart/form-data" action="~/api/upload">        
+        <div class="form-group">
+            <label for="image1">Image File</label>
+            <input class="form-control-file" name="image1" type="file" />
+        </div>
+        <div class="form-group">
+            <input class="btn btn-info" type="submit" value="Upload" />
+        </div>
+    </form>
+</div>
