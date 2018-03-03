@@ -12,13 +12,79 @@ namespace JSON_And_Linq
     {
         static void Main(string[] args)
         {
+            JArray rss = JArray.Parse(GetPost());
+
             ExemploDoSite();
-            ProcessarJsonAPI();
+
+            GetByUserId(rss, "6");
+
+            GetById(rss, "3");
+
+            GetByQuery(rss, "possimus");
+
+            GetDataPagination(rss, 1, 5);
+            GetDataPagination(rss, 2, 5);
+            GetDataPagination(rss, 3, 5);
+
+            GetDataPaginationQuery(rss, "possimus", 1, 2);
+            GetDataPaginationQuery(rss, "possimus", 2, 2);
+            GetDataPaginationQuery(rss, "possimus", 3, 2);
+
             Console.ReadKey();
         }
-        static void ProcessarJsonAPI()
+
+        static void GetByUserId(JArray rss, string id)
+        {            
+            var lista = (from rs in rss where rs["userId"].ToString() == id select rs);
+            ImprimirNaTela(lista);
+        }
+
+        static void GetById(JArray rss, string id)
         {
-            IList<Post> posts = JsonConvert.SerializeObject<Post>(GetPost);
+            var lista = (from rs in rss where rs["id"].ToString() == id select rs);
+            ImprimirNaTela(lista);
+        }
+
+        static void GetByQuery(JArray rss, string search)
+        {
+            var lista = (from rs in rss where (rs["body"].ToString().Contains(search) 
+                         || rs["title"].ToString().Contains(search)) select rs);
+            ImprimirNaTela(lista);
+        }
+
+        static void GetDataPagination(JArray rss, int page, int pageSize =10)
+        {
+            var lista = (from rs in rss select rs).Skip((page -1) * pageSize).Take(pageSize);
+            ImprimirNaTela(lista);
+        }
+
+        static void GetDataPaginationQuery(JArray rss, string search, int page, int pageSize = 10)
+        {
+            var lista = (from rs in rss
+                         where (rs["body"].ToString().Contains(search) || rs["title"].ToString().Contains(search))
+                         select rs)
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize);
+
+            ImprimirNaTela(lista);
+        }
+
+
+        static void ImprimirNaTela(IEnumerable<JToken> lista)
+        {
+            foreach (var l in lista)
+            {
+                Console.WriteLine(l);
+            }
+            Console.WriteLine(lista.Count());
+            ImprimirSeparador();
+        }
+
+        static void ImprimirSeparador()
+        {
+            Console.WriteLine("");
+            Console.WriteLine(new String('-',100));
+            Console.WriteLine("");
         }
 
         static string GetPost()
@@ -85,6 +151,7 @@ namespace JSON_And_Linq
             {
                 Console.WriteLine(cat);
             }
+            ImprimirSeparador();
 
         }
 
