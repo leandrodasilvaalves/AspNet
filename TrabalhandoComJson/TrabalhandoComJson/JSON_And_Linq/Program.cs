@@ -14,7 +14,7 @@ namespace JSON_And_Linq
         {
             JArray rss = JArray.Parse(GetPost());
 
-            ExemploDoSite();
+            ExampleSite();
 
             GetByUserId(rss, "6");
 
@@ -30,32 +30,36 @@ namespace JSON_And_Linq
             GetDataPaginationQuery(rss, "possimus", 2, 2);
             GetDataPaginationQuery(rss, "possimus", 3, 2);
 
+            DeserializeJsonLinq(rss);
+
+            SerializeJsonLinq();
+
             Console.ReadKey();
         }
 
         static void GetByUserId(JArray rss, string id)
         {            
             var lista = (from rs in rss where rs["userId"].ToString() == id select rs);
-            ImprimirNaTela(lista);
+            PrintScreen(lista);
         }
 
         static void GetById(JArray rss, string id)
         {
             var lista = (from rs in rss where rs["id"].ToString() == id select rs);
-            ImprimirNaTela(lista);
+            PrintScreen(lista);
         }
 
         static void GetByQuery(JArray rss, string search)
         {
             var lista = (from rs in rss where (rs["body"].ToString().Contains(search) 
                          || rs["title"].ToString().Contains(search)) select rs);
-            ImprimirNaTela(lista);
+            PrintScreen(lista);
         }
 
         static void GetDataPagination(JArray rss, int page, int pageSize =10)
         {
             var lista = (from rs in rss select rs).Skip((page -1) * pageSize).Take(pageSize);
-            ImprimirNaTela(lista);
+            PrintScreen(lista);
         }
 
         static void GetDataPaginationQuery(JArray rss, string search, int page, int pageSize = 10)
@@ -66,21 +70,68 @@ namespace JSON_And_Linq
                             .Skip((page - 1) * pageSize)
                             .Take(pageSize);
 
-            ImprimirNaTela(lista);
+            PrintScreen(lista);
         }
 
+        static void DeserializeJsonLinq(JArray rss)
+        {
+            IList<Post> posts = rss.Select(p => new Post
+            {
+                UserId = (int)p["userId"],
+                Id = (int)p["id"],
+                Title = (string)p["title"],
+                Body = (string)p["body"]
+                
+            }).ToList();
 
-        static void ImprimirNaTela(IEnumerable<JToken> lista)
+            PrintDeserializedJson(posts);
+        }
+
+        static void SerializeJsonLinq()
+        {
+            IList<Post> posts = new List<Post>
+            {
+                new Post
+                {
+                    UserId = 150,
+                    Id = 101,
+                    Title = "Title Test",
+                    Body =  "This is body test to Jons serializatin with linq"
+                }
+            };
+
+            JArray postArray = new JArray(
+                    posts.Select(p => new JObject {
+                        {"userId", p.UserId  },
+                        {"id", p.Id },
+                        {"title", p.Title },
+                        {"body", p.Body }
+                    })
+                );
+            PrintScreen(postArray);
+        }
+
+        static void PrintScreen(IEnumerable<JToken> lista)
         {
             foreach (var l in lista)
             {
                 Console.WriteLine(l);
             }
-            Console.WriteLine(lista.Count());
-            ImprimirSeparador();
+            Console.WriteLine("Total items: {0}", lista.Count());
+            PrintSeparator();
         }
 
-        static void ImprimirSeparador()
+        static void PrintDeserializedJson(IList<Post> posts)
+        {
+            foreach (var p in posts)
+            {
+                Console.WriteLine("UserId: {0} \nId: {1} \nTitle: {2} \nBody: {3}", p.UserId, p.Id, p.Title, p.Body);
+                PrintSeparator();
+            }
+            
+        }
+
+        static void PrintSeparator()
         {
             Console.WriteLine("");
             Console.WriteLine(new String('-',100));
@@ -100,7 +151,7 @@ namespace JSON_And_Linq
             }
         }
 
-        static void ExemploDoSite()
+        static void ExampleSite()
         {
             string json = @"{
               'channel': {
@@ -151,7 +202,7 @@ namespace JSON_And_Linq
             {
                 Console.WriteLine(cat);
             }
-            ImprimirSeparador();
+            PrintSeparator();
 
         }
 
