@@ -40,26 +40,26 @@ namespace JSON_And_Linq
         static void GetByUserId(JArray rss, string id)
         {            
             var lista = (from rs in rss where rs["userId"].ToString() == id select rs);
-            PrintScreen(lista);
+            PrintOut(lista);
         }
 
         static void GetById(JArray rss, string id)
         {
             var lista = (from rs in rss where rs["id"].ToString() == id select rs);
-            PrintScreen(lista);
+            PrintOut(lista);
         }
 
         static void GetByQuery(JArray rss, string search)
         {
             var lista = (from rs in rss where (rs["body"].ToString().Contains(search) 
                          || rs["title"].ToString().Contains(search)) select rs);
-            PrintScreen(lista);
+            PrintOut(lista);
         }
 
         static void GetDataPagination(JArray rss, int page, int pageSize =10)
         {
             var lista = (from rs in rss select rs).Skip((page -1) * pageSize).Take(pageSize);
-            PrintScreen(lista);
+            PrintOut(lista);
         }
 
         static void GetDataPaginationQuery(JArray rss, string search, int page, int pageSize = 10)
@@ -70,7 +70,7 @@ namespace JSON_And_Linq
                             .Skip((page - 1) * pageSize)
                             .Take(pageSize);
 
-            PrintScreen(lista);
+            PrintOut(lista);
         }
 
         static void DeserializeJsonLinq(JArray rss)
@@ -84,7 +84,7 @@ namespace JSON_And_Linq
                 
             }).ToList();
 
-            PrintDeserializedJson(posts);
+            PrintOutDeserializedJson(posts);
         }
 
         static void SerializeJsonLinq()
@@ -108,30 +108,30 @@ namespace JSON_And_Linq
                         {"body", p.Body }
                     })
                 );
-            PrintScreen(postArray);
+            PrintOut(postArray);
         }
 
-        static void PrintScreen(IEnumerable<JToken> lista)
+        static void PrintOut(IEnumerable<JToken> lista)
         {
             foreach (var l in lista)
             {
                 Console.WriteLine(l);
             }
             Console.WriteLine("Total items: {0}", lista.Count());
-            PrintSeparator();
+            PrintOutSeparator();
         }
 
-        static void PrintDeserializedJson(IList<Post> posts)
+        static void PrintOutDeserializedJson(IList<Post> posts)
         {
             foreach (var p in posts)
             {
                 Console.WriteLine("UserId: {0} \nId: {1} \nTitle: {2} \nBody: {3}", p.UserId, p.Id, p.Title, p.Body);
-                PrintSeparator();
+                PrintOutSeparator();
             }
             
         }
 
-        static void PrintSeparator()
+        static void PrintOutSeparator()
         {
             Console.WriteLine("");
             Console.WriteLine(new String('-',100));
@@ -202,7 +202,7 @@ namespace JSON_And_Linq
             {
                 Console.WriteLine(cat);
             }
-            PrintSeparator();
+            PrintOutSeparator();
 
         }
 
