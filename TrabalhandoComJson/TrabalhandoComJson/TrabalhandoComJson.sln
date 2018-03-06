@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializingAndDeserializingJSON", "SerializingAndDeserializingJSON\SerializingAndDeserializingJSON.csproj", "{D0DCC46A-9781-4787-957D-C36E5D687F0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON_And_Linq", "JSON_And_Linq\JSON_And_Linq.csproj", "{1123E6ED-D900-4098-A5C6-270F7A261A75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON_Dates", "JSON_Dates\JSON_Dates.csproj", "{065F07BB-7DA0-4049-899C-374EC33FDC55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingContractResolver", "UsingContractResolver\UsingContractResolver.csproj", "{B94B9F1C-9202-4790-AA96-2C319F6E89D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{1123E6ED-D900-4098-A5C6-270F7A261A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1123E6ED-D900-4098-A5C6-270F7A261A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1123E6ED-D900-4098-A5C6-270F7A261A75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{065F07BB-7DA0-4049-899C-374EC33FDC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065F07BB-7DA0-4049-899C-374EC33FDC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065F07BB-7DA0-4049-899C-374EC33FDC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065F07BB-7DA0-4049-899C-374EC33FDC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94B9F1C-9202-4790-AA96-2C319F6E89D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94B9F1C-9202-4790-AA96-2C319F6E89D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94B9F1C-9202-4790-AA96-2C319F6E89D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94B9F1C-9202-4790-AA96-2C319F6E89D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
