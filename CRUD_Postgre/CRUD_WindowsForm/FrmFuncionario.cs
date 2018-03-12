@@ -62,7 +62,8 @@ namespace CRUD_WindowsForm
             {
                 using(var db = new PostgreContext())
                 {
-                    var func = db.Funcionarios.FirstOrDefault(c => c.Id == int.Parse(txtId.Text));
+                    int id = int.Parse(txtId.Text);
+                    var func = db.Funcionarios.FirstOrDefault(c => c.Id == id);
                     db.Funcionarios.Remove(func);
                     db.SaveChanges();
                     MessageBox.Show("Funcionário excluído com sucesso.");

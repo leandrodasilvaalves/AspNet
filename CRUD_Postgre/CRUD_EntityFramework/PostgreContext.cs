@@ -13,7 +13,6 @@ namespace CRUD_EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<StoreGeneratedIdentityKeyConvention>();
             modelBuilder.Configurations.Add(new FuncionarioConfig());
             modelBuilder.HasDefaultSchema("public");
             base.OnModelCreating(modelBuilder);

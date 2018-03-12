@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Imagens\PackagesVersions_Entityframework_PostgreSql.JPG" />
+    <Content Include="ScriptTabelaPostgreSql.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

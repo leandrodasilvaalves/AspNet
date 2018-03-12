@@ -22,7 +22,7 @@ namespace CRUD_WindowsForm
         {
             using(var db = new PostgreContext())
             {
-                dgvFuncionarios.DataSource = db.Funcionarios.ToList();
+                dgvFuncionarios.DataSource = db.Funcionarios.OrderBy(f => f.Id).ToList();
             }
         }
 
@@ -31,8 +31,9 @@ namespace CRUD_WindowsForm
             using (var db = new PostgreContext())
             {
                 dgvFuncionarios.DataSource = db.Funcionarios
-                    .Where(c => c.Nome.ToLower().Contains(buscar.ToLower()) ||
-                                c.Email.ToLower().Contains(buscar.ToLower())).ToList();
+                    .Where(f => f.Nome.ToLower().Contains(buscar.ToLower()) ||
+                                f.Email.ToLower().Contains(buscar.ToLower()))
+                                .OrderBy(f => f.Id).ToList();
             }
         }
 
