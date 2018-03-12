@@ -1,16 +1,16 @@
 ﻿namespace CRUD_WindowsForm
 {
-    partial class FrmListaFuncionarios
+    partial class FrmListaCargos
     {
         /// <summary>
-        /// Variável de designer necessária.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Limpar os recursos que estão sendo usados.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,31 +20,31 @@
             base.Dispose(disposing);
         }
 
-        #region Código gerado pelo Windows Form Designer
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Método necessário para suporte ao Designer - não modifique 
-        /// o conteúdo deste método com o editor de código.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
+            this.dgvCargos = new System.Windows.Forms.DataGridView();
             this.btnNovo = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCargos)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPesquisa
             // 
             this.txtPesquisa.Location = new System.Drawing.Point(13, 13);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(368, 20);
+            this.txtPesquisa.Size = new System.Drawing.Size(236, 20);
             this.txtPesquisa.TabIndex = 0;
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(387, 13);
+            this.btnPesquisar.Location = new System.Drawing.Point(255, 10);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 1;
@@ -52,18 +52,21 @@
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.BtnPesquisar_Click);
             // 
-            // dgvFuncionarios
+            // dgvCargos
             // 
-            this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFuncionarios.Location = new System.Drawing.Point(13, 40);
-            this.dgvFuncionarios.Name = "dgvFuncionarios";
-            this.dgvFuncionarios.Size = new System.Drawing.Size(449, 358);
-            this.dgvFuncionarios.TabIndex = 2;
-            this.dgvFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFuncionarios_CellDoubleClick);
+            this.dgvCargos.AllowUserToAddRows = false;
+            this.dgvCargos.AllowUserToDeleteRows = false;
+            this.dgvCargos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCargos.Location = new System.Drawing.Point(13, 40);
+            this.dgvCargos.Name = "dgvCargos";
+            this.dgvCargos.ReadOnly = true;
+            this.dgvCargos.Size = new System.Drawing.Size(317, 300);
+            this.dgvCargos.TabIndex = 2;
+            this.dgvCargos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCargos_CellContentClick);
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(387, 404);
+            this.btnNovo.Location = new System.Drawing.Point(255, 351);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 3;
@@ -71,20 +74,20 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
-            // FrmListaFuncionarios
+            // FrmListaCargos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 444);
+            this.ClientSize = new System.Drawing.Size(342, 386);
+            this.Controls.Add(this.dgvCargos);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.dgvFuncionarios);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtPesquisa);
-            this.Name = "FrmListaFuncionarios";
+            this.Name = "FrmListaCargos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lista de Funcionários";
-            this.Load += new System.EventHandler(this.FrmListaFuncionarios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
+            this.Text = "Lista de Cargos";
+            this.Load += new System.EventHandler(this.FrmListaCargos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCargos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,8 +97,7 @@
 
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Button btnPesquisar;
-        private System.Windows.Forms.DataGridView dgvFuncionarios;
+        private System.Windows.Forms.DataGridView dgvCargos;
         private System.Windows.Forms.Button btnNovo;
     }
 }
-

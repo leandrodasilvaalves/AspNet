@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace CRUD_EntityFramework
 {
     public class PostgreContext : DbContext
-    {
+    {        
+        public DbSet<Cargo> Cargos { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
 
         public PostgreContext():base("PostgreConexao")
@@ -13,7 +13,8 @@ namespace CRUD_EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new FuncionarioConfig());
+            modelBuilder.Configurations.Add(new CargoConfig());
+            modelBuilder.Configurations.Add(new FuncionarioConfig());            
             modelBuilder.HasDefaultSchema("public");
             base.OnModelCreating(modelBuilder);
         }

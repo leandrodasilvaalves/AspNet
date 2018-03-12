@@ -22,7 +22,17 @@ namespace CRUD_WindowsForm
         {
             using(var db = new PostgreContext())
             {
-                dgvFuncionarios.DataSource = db.Funcionarios.OrderBy(f => f.Id).ToList();
+                var funcionarios = (from f in db.Funcionarios
+                                    orderby f.Id
+                                    select new
+                                    {
+                                        Id = f.Id,
+                                        Nome = f.Nome,
+                                        Email = f.Email,
+                                        Cargo = f.Cargo.Descricao
+                                    }).ToList();
+
+                dgvFuncionarios.DataSource = funcionarios;
             }
         }
 
@@ -30,10 +40,21 @@ namespace CRUD_WindowsForm
         {
             using (var db = new PostgreContext())
             {
-                dgvFuncionarios.DataSource = db.Funcionarios
-                    .Where(f => f.Nome.ToLower().Contains(buscar.ToLower()) ||
-                                f.Email.ToLower().Contains(buscar.ToLower()))
-                                .OrderBy(f => f.Id).ToList();
+                buscar = buscar.ToLower();
+                var funcionarios = (from f in db.Funcionarios
+                                    where ( f.Nome.ToLower().Contains(buscar)||
+                                            f.Email.ToLower().Contains(buscar) ||
+                                            f.Cargo.Descricao.ToLower().Contains(buscar))
+                                    orderby f.Id
+                                    select new
+                                    {
+                                        Id = f.Id,
+                                        Nome = f.Nome,
+                                        Email = f.Email,
+                                        Cargo = f.Cargo.Descricao
+                                    }).ToList();
+
+                dgvFuncionarios.DataSource = funcionarios;
             }
         }
 

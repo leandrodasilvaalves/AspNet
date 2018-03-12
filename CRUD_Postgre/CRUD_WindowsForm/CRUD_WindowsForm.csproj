@@ -60,11 +60,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCargo.Designer.cs">
+      <DependentUpon>FrmCargo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmFuncionario.Designer.cs">
       <DependentUpon>FrmFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListaCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaCargos.Designer.cs">
+      <DependentUpon>FrmListaCargos.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmListaFuncionarios.cs">
       <SubType>Form</SubType>
@@ -72,13 +84,28 @@
     <Compile Include="FrmListaFuncionarios.Designer.cs">
       <DependentUpon>FrmListaFuncionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCargo.resx">
+      <DependentUpon>FrmCargo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFuncionario.resx">
       <DependentUpon>FrmFuncionario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaCargos.resx">
+      <DependentUpon>FrmListaCargos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListaFuncionarios.resx">
       <DependentUpon>FrmListaFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

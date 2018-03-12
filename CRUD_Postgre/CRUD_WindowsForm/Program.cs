@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRUD_WindowsForm
@@ -16,7 +13,7 @@ namespace CRUD_WindowsForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmListaFuncionarios());
+            Application.Run(new FrmMain());
         }
     }
 }

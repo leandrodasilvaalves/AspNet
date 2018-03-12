@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cargo.cs" />
+    <Compile Include="CargoConfig.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="FuncionarioConfig.cs" />
     <Compile Include="PostgreContext.cs" />

@@ -11,11 +11,13 @@ namespace CRUD_WindowsForm
         public FrmFuncionario()
         {
             InitializeComponent();
+            CarregarCargos();
         }
 
         public FrmFuncionario(int id)
         {            
             InitializeComponent();
+            CarregarCargos();
             CarregarFuncionario(id);
         }
 
@@ -26,7 +28,9 @@ namespace CRUD_WindowsForm
                 var func = new Funcionario()
                 {
                     Nome = txtNome.Text,
-                    Email = txtEmail.Text
+                    Email = txtEmail.Text,
+                    CargoId = int.Parse(cboCargos.SelectedValue.ToString())
+                    
                 };
                 if (txtId.Text == String.Empty)
                     db.Funcionarios.Add(func);
@@ -51,6 +55,22 @@ namespace CRUD_WindowsForm
                 txtId.Text = func.Id.ToString();
                 txtNome.Text = func.Nome;
                 txtEmail.Text = func.Email;
+                cboCargos.SelectedValue = func.CargoId;
+            }
+        }
+
+        private void CarregarCargos()
+        {
+            using(var db = new PostgreContext())
+            {
+                cboCargos.DataSource = (from c in db.Cargos
+                                        orderby c.Id
+                                        select new {
+                                            Id = c.Id,
+                                            Descricao = c.Descricao
+                                        }).ToList();
+                cboCargos.DisplayMember = "Descricao";
+                cboCargos.ValueMember = "Id";
             }
         }
 
@@ -71,5 +91,7 @@ namespace CRUD_WindowsForm
                 }
             }
         }
+
+       
     }
 }

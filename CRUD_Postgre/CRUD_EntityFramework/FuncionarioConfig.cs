@@ -19,6 +19,14 @@ namespace CRUD_EntityFramework
             Property(f => f.Email)
                 .HasColumnName("email")
                 .HasMaxLength(150);
+
+            Property(f => f.CargoId)
+                .HasColumnName("cargoid");
+
+            HasRequired(f => f.Cargo)
+                .WithMany(c => c.Funcionarios)
+                .HasForeignKey(f => f.CargoId);
+
         }
     }
 }
