@@ -1,0 +1,59 @@
+﻿@model List<MvcRazorForteMenteTipadoPostandoLista.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Produtos</h2>
+
+
+@using (Html.BeginForm("Index", "Produtos", FormMethod.Post))
+{
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Preço
+            </th>
+            <th>
+                Ativo
+            </th>
+        </tr>
+
+        @{int i = 0;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.Hidden($"[{i}].Id", item.Id)
+                        @Html.TextBox($"[{i}].Nome", item.Nome, new { @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.TextBox($"[{i}].Preco", item.Preco, new { @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.CheckBox($"[{i}].Ativo", item.Ativo, new { @class = "switch switch--shadow" })                        
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+    </table>
+
+    <div class="row">
+        <div class="col-12">
+            <input type="submit" value="Salvar" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+<style>
+    input {
+        border: none;
+        background-color: #fff0;
+    }
+</style>
