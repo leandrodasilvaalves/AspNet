@@ -46,7 +46,7 @@ namespace CrudMvcMongoDb.Controllers
   
         [HttpPost]
         [Route("api/product")]
-        public async Task<IActionResult> Post(Product model)
+        public async Task<IActionResult> Post([FromBody]Product model)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace CrudMvcMongoDb.Controllers
   
         [HttpPut]
         [Route("api/product/updatePrice")]
-        public async Task<IActionResult> UpdatePrice(Product model)
+        public async Task<IActionResult> UpdatePrice([FromBody]Product model)
         {
             if (string.IsNullOrWhiteSpace(model.Name))
                 return BadRequest("Product name missing");
