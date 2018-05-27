@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CrudMvcMongoDb.DataLayer;
-using CrudMvcMongoDb.DataLayer.Abstracts;
 using CrudMvcMongoDb.Models;
+using CrudMvcMongoDb.Models.Interfaces;
+using CrudMvcMongoDb.Models.Interfaces.Repositories;
+using CrudMvcMongoDb.Models.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +32,8 @@ namespace CrudMvcMongoDb
                Options.ConnectionString =   Configuration.GetSection("MongoConnection:ConnectionString").Value;
                Options.DataBase = Configuration.GetSection("MongoConnection:Database").Value;
            });
-           services.AddTransient<IProductService, ProductService>();
+           services.AddTransient<IBaseRepository, BaseRepository>();
+           services.AddTransient<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

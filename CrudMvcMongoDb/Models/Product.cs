@@ -1,11 +1,11 @@
 namespace CrudMvcMongoDb.Models
 {
-    public class Product
+    public class Product : MongoDBModel
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public decimal Price { get; set; }
+
+        public  override string CollectionName => "Product";
     }
 }
