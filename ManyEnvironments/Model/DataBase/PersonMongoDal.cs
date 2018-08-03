@@ -1,11 +1,13 @@
 ﻿using Microsoft.Extensions.Options;
+using Model.Entities;
+using Model.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Model
+namespace Model.DataBase
 {
     public class PersonMongoDal : MongoDal<Person>, IPersonMongoDal
     {

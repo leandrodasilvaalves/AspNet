@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Model.Entities;
+using System.Collections.Generic;
 
-namespace Model
+namespace Model.Interfaces
 {
     public interface IMongoDal<T> where T : EntityBase
     {

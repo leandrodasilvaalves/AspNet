@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Model.Entities;
+using System;
 using System.Collections.Generic;
 
-namespace Model
+namespace Model.Charge
 {
     public static class PersonData
     {

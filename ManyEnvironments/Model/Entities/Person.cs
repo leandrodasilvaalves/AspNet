@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Model
+namespace Model.Entities
 {
     public class Person : EntityBase
     {

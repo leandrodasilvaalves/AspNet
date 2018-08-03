@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Model;
+using Model.DataBase;
+using Model.Interfaces;
 using WebAPI.Classes;
 using WebAPI.Extensions;
 using WebAPI.Interfaces;

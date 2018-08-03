@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Model;
+using Model.Charge;
+using Model.Entities;
+using Model.Interfaces;
 using System.Collections.Generic;
 
 namespace WebAPI.Controllers

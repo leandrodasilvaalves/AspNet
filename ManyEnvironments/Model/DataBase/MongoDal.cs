@@ -1,13 +1,14 @@
 ﻿using Microsoft.Extensions.Options;
+using Model.Entities;
+using Model.Interfaces;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Model
+namespace Model.DataBase
 {
     public class MongoDal<T> : IMongoDal<T> where T : EntityBase
     {

@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Model
+namespace Model.Entities
 {
     public abstract class EntityBase
     {
