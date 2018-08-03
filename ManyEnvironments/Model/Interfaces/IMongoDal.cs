@@ -12,9 +12,11 @@ namespace Model.Interfaces
 
         void UpdateOne(string collectionName, T document);
 
-        void UpdateOne(string collectionName, Dictionary<string, object> dictionary, string id);        
+        void UpdateOne(string collectionName, Dictionary<string, object> dictionary, string id);
 
         ICollection<T> ListData(string collectionName, Expression<Func<T, object>> order, TypeOrder typeOrder = TypeOrder.Ascending);
+
+        ICollection<T> ListData(string collectionName, Expression<Func<T, bool>> filter, Expression<Func<T, object>> order, TypeOrder typeOrder = TypeOrder.Ascending);
 
         void ClearDataBase(string collectionName);
     }

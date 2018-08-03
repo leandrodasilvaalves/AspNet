@@ -59,6 +59,14 @@ namespace Model.DataBase
                 return _database.GetCollection<T>(collectionData).Find(x => true).SortByDescending(order).ToList();
         }
 
+        public ICollection<T> ListData(string collectionData, Expression<Func<T, bool>> filter, Expression<Func<T, object>> order, TypeOrder typeOrder = TypeOrder.Ascending)
+        {
+            if (typeOrder == TypeOrder.Ascending)
+                return _database.GetCollection<T>(collectionData).Find(filter).SortBy(order).ToList();
+            else
+                return _database.GetCollection<T>(collectionData).Find(filter).SortByDescending(order).ToList();
+        }
+
         public void ClearDataBase(string collectionName) =>
             _database.DropCollection(collectionName);
     }
