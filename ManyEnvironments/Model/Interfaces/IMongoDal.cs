@@ -1,5 +1,8 @@
 ﻿using Model.Entities;
+using Model.Enums;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Model.Interfaces
 {
@@ -11,7 +14,7 @@ namespace Model.Interfaces
 
         void UpdateOne(string collectionName, Dictionary<string, object> dictionary, string id);        
 
-        ICollection<T> ListData(string collectionName);
+        ICollection<T> ListData(string collectionName, Expression<Func<T, object>> order, TypeOrder typeOrder = TypeOrder.Ascending);
 
         void ClearDataBase(string collectionName);
     }

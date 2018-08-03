@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Model.Entities;
+using Model.Enums;
 using Model.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -7,6 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Model.DataBase
 {
@@ -49,8 +51,13 @@ namespace Model.DataBase
             _database.GetCollection<T>(collectionName).UpdateOne(Builders<T>.Filter.Eq("Id", id), bson);
         }
 
-        public ICollection<T> ListData(string collectionData) =>
-            _database.GetCollection<T>(collectionData).Find(x => true).ToList();
+        public ICollection<T> ListData(string collectionData, Expression<Func<T, object>> order, TypeOrder typeOrder = TypeOrder.Ascending)
+        {
+            if(typeOrder == TypeOrder.Ascending)
+                return _database.GetCollection<T>(collectionData).Find(x => true).SortBy(order).ToList();
+            else
+                return _database.GetCollection<T>(collectionData).Find(x => true).SortByDescending(order).ToList();
+        }
 
         public void ClearDataBase(string collectionName) =>
             _database.DropCollection(collectionName);

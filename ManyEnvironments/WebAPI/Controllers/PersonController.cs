@@ -24,8 +24,8 @@ namespace WebAPI.Controllers
 
         [HttpGet("list")]
         public IActionResult GetData()
-        {
-            var data = _personMongoDal.ListData(personCollection);
+        {           
+            var data = _personMongoDal.ListData(personCollection, x => x.Age);
             return Json(new { data });
         }
 
