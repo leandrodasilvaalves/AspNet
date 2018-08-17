@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -10,21 +11,49 @@ namespace ConsoleAppConsumindoApiRest
 {
     class Program
     {
-        private static HttpClient _httpClient;        
+        private static HttpClient _httpClient;
+        private static List<long> marcador;
 
         static void Main(string[] args)
         {
-            _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var paramentros = new long[] { 11823353, 8753332, 11264150, 12033778, 11116874, 11782659, 11639778, 4101207, 4450486, 11478745 };
-            var produtos = ListarProdutos(paramentros).Result.ToList();
-            produtos.ForEach(x => Console.WriteLine(x.ToString()));
-            
+            marcador = new List<long>();
+            ExecutarRequisicoes(10);
+            CalcularMediaTempo();
             Console.ReadKey();
         }
 
+        private static void ExecutarRequisicoes(int qtde)
+        {
+            for(var i = 0; i <= qtde; i++)
+            {
+                var watch = Stopwatch.StartNew();
+
+                _httpClient = new HttpClient();
+                _httpClient.DefaultRequestHeaders.Accept.Clear();
+                _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var paramentros = new long[] { 11823353, 8753332, 11264150, 12033778, 11116874, 11782659, 11639778, 4101207, 4450486, 11478745 };
+                var produtos = JsonConvert.SerializeObject(ListarProdutos(paramentros).Result);
+                Console.WriteLine("HTTPCLIENT");
+                //Console.WriteLine(produtos);
+
+                watch.Stop();
+                Console.WriteLine($"Tempo: { watch.ElapsedMilliseconds }");
+                marcador.Add(watch.ElapsedMilliseconds);
+            }
+        }
+
+        private static void CalcularMediaTempo()
+        {
+            long total = 0;
+            foreach (var i in marcador)
+            {
+                total += i;
+            }
+            var media = total / marcador.Count;
+            Console.WriteLine($"Tempo Total: { total }");
+            Console.WriteLine($"Media: { media }");
+        }
 
         public static async Task<ICollection<Product>> ListarProdutos(long[] skus)
         {
@@ -75,10 +104,5 @@ namespace ConsoleAppConsumindoApiRest
 
         [JsonIgnore]
         public string SkuCategoryName { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
     }
 }
