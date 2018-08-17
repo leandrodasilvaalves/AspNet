@@ -38,12 +38,8 @@ namespace ConsoleAppConsumindoApiRest
 
         private static string PrepararParametrosUrl(long[] skus)
         {
-            string parametrosUrl = string.Empty;
-
-            for (var i = 0; i < skus.Length; i++)
-                parametrosUrl += i < skus.Length -1 ? $"ids={skus[i]}&" : $"ids={skus[i]}";
-
-            return parametrosUrl;
+            var parametros = skus.Select(sku => $"ids={ sku }").ToArray();
+            return string.Join("&", parametros);
         }
     }
 
